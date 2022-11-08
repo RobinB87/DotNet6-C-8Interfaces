@@ -6,6 +6,21 @@ namespace PeopleViewer.Controllers;
 public class PeopleController : Controller
 {
     private ReaderFactory _factory = new ReaderFactory();
+    private IConfiguration _configuration;
+
+    public PeopleController(IConfiguration configuration)
+    {
+        _configuration = configuration 
+            ?? throw new ArgumentNullException(nameof(configuration));
+    }
+
+    public IActionResult UseConfiguredReader()
+    {
+        var readerType = _configuration["PersonReaderType"];
+        ViewData["Title"] = "Using Configured Reader";
+        return PopulatePeopleView(readerType);
+    }
+
     public IActionResult UseService()
     {
         ViewData["Title"] = "Using a Web Service";
