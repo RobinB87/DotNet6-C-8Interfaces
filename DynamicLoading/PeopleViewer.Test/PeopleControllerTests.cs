@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PeopleViewer.Controllers;
 using PersonReader.Interface;
+using System.Reflection;
 
 namespace PeopleViewer.Test;
 
@@ -11,12 +12,35 @@ public class PeopleControllerTests
     [TestMethod]
     public void PeopleController_OnRuntimeReaderAction_ModelIsPopulated()
     {
-        Assert.Inconclusive();
+        // Arrange
+        IPersonReader reader = new FakeReader();
+        var controller = new PeopleController(reader);
+
+        // Act (with sanity null check)
+        var result = controller.UseRuntimeReader() as ViewResult;
+        Assert.IsNotNull(result, "Controller action failed");
+        var model = result.Model as IEnumerable<Person>;
+
+        // Assert
+        Assert.IsNotNull(model, "Model property is not populated");
+        Assert.AreEqual(2, model.Count());
     }
 
     [TestMethod]
     public void PeopleController_OnRuntimeReaderAction_ReaderTypeIsPopulated()
     {
-        Assert.Inconclusive();
+        // Arrange
+        IPersonReader reader = new FakeReader();
+        var controller = new PeopleController(reader);
+        var expectedType = "PeopleViewer.Test.FakeReader";
+
+        // Act (with sanity null check)
+        var result = controller.UseRuntimeReader() as ViewResult;
+        Assert.IsNotNull(result, "Controller action failed");
+        var actualType = result.ViewData["ReaderType"];
+
+        // Assert
+        Assert.IsNotNull(actualType, "ReaderType is not populated");
+        Assert.AreEqual(expectedType, actualType);
     }
 }
