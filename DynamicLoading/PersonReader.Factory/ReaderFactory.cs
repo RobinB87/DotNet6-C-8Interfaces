@@ -3,7 +3,6 @@ using PersonReader.Interface;
 using System.Reflection;
 
 namespace PersonReader.Factory;
-
 public class ReaderFactory
 {
     private IConfiguration Configuration;
