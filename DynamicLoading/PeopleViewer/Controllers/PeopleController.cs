@@ -1,25 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PersonReader.Factory;
 using PersonReader.Interface;
 
 namespace PeopleViewer.Controllers;
 
 public class PeopleController : Controller
 {
-    private ReaderFactory readerFactory;
-
-    public PeopleController(IConfiguration configuration)
+    private readonly IPersonReader _reader;
+    public PeopleController(IPersonReader reader)
     {
-        readerFactory = new ReaderFactory(configuration);
+        _reader = reader ?? 
+            throw new ArgumentNullException(nameof(reader));
     }
 
     public IActionResult UseRuntimeReader()
     {
-        IPersonReader reader = readerFactory.GetReader();
-        IEnumerable<Person> people = reader.GetPeople();
+        IEnumerable<Person> people = _reader.GetPeople();
 
         ViewData["Title"] = "Using a Runtime Reader";
-        ViewData["ReaderType"] = reader.GetType().ToString();
+        ViewData["ReaderType"] = _reader.GetType().ToString();
         return View("Index", people);
     }
 
