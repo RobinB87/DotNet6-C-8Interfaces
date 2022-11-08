@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonReader.SQL", "PersonR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleViewer", "PeopleViewer\PeopleViewer.csproj", "{1BF46074-8DC2-448D-823E-D1D354FDF856}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleViewer.Test", "PeopleViewer.Test\PeopleViewer.Test.csproj", "{7249450B-7AD3-4EEF-B0A3-F279ED453BE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{1BF46074-8DC2-448D-823E-D1D354FDF856}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BF46074-8DC2-448D-823E-D1D354FDF856}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BF46074-8DC2-448D-823E-D1D354FDF856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7249450B-7AD3-4EEF-B0A3-F279ED453BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7249450B-7AD3-4EEF-B0A3-F279ED453BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7249450B-7AD3-4EEF-B0A3-F279ED453BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7249450B-7AD3-4EEF-B0A3-F279ED453BE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
