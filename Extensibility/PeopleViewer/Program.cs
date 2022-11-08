@@ -1,6 +1,11 @@
+using PersonReader.Interface;
+using PersonReader.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel(options => options.ListenLocalhost(5000));
+
+builder.Services.AddScoped<IPersonReader, ServiceReader>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -2,6 +2,6 @@
 
 public interface IPersonReader
 {
-    IEnumerable<Person> GetPeople();
-    Person GetPerson(int id);
+    IEnumerable<Person>? GetPeople();
+    Person? GetPerson(int id);
 }
